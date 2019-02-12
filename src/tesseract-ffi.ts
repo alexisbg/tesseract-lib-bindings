@@ -1,12 +1,7 @@
 import FFI from 'ffi';
 import Path from 'path';
 import Ref, { Type } from 'ref';
-
-
-/* eslint-disable @typescript-eslint/no-empty-interface */
-export interface TessBaseApi {}
-export interface TessResultIterator {}
-/* eslint-enable @typescript-eslint/no-empty-interface */
+import { TessBaseApi, TessResultIterator } from './interfaces';
 
 
 /* eslint-disable @typescript-eslint/camelcase */
@@ -78,11 +73,6 @@ else {
   throw new Error('Unsupported plateform: ' + process.platform);
 }
 
-libPath = Path.resolve(__dirname, libPath);
-
-// tessdata path
-// const tessdataPath = path.resolve(__dirname, '../tesseract/tessdata') + '/'; // Has to end with /
-
 
 // Types
 const charPtr: Type = Ref.refType('char');
@@ -99,7 +89,7 @@ const TessResultIteratorPtr: Type = TessPageIteratorPtr;
 
 // Bindings of useful functions
 /* eslint-disable key-spacing */
-export default FFI.Library(libPath, {
+export default FFI.Library(Path.resolve(__dirname, libPath), {
   TessBaseAPICreate:              [TessBaseAPIPtr, []],
   TessBaseAPIClear:               ['void', [TessBaseAPIPtr]],
   TessBaseAPIDelete:              ['void', [TessBaseAPIPtr]],

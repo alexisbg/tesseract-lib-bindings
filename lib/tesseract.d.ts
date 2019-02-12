@@ -1,4 +1,4 @@
-import { TessBaseApi, TessResultIterator } from './tesseract-ffi';
+import { TessBaseApi, TessResultIterator } from './interfaces';
 export declare function init(datapath: string, language: string): TessBaseApi;
 export declare function clear(api: TessBaseApi): void;
 export declare function close(api: TessBaseApi): void;

@@ -1,6 +1,6 @@
 import Ref from 'ref';
-
-import TessFFI, { TessBaseApi, TessResultIterator } from './tesseract-ffi';
+import TessFFI from './tesseract-ffi';
+import { TessBaseApi, TessResultIterator } from './interfaces';
 
 
 export function init(datapath: string, language: string): TessBaseApi {

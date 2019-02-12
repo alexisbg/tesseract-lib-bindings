@@ -47,7 +47,9 @@ module.exports = {
     {
       "files": ["lib/**/*"],
       "rules": {
+        "@typescript-eslint/camelcase": 0,
         "@typescript-eslint/indent": 0,
+        "@typescript-eslint/no-empty-interface": 0,
       }
     }
   ]

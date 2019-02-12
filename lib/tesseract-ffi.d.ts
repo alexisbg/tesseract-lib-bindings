@@ -1,7 +1,4 @@
-export interface TessBaseApi {
-}
-export interface TessResultIterator {
-}
+import { TessBaseApi, TessResultIterator } from './interfaces';
 interface TesseractFfiFuncs {
     TessBaseAPICreate(): TessBaseApi;
     TessBaseAPIClear(api: TessBaseApi): void;

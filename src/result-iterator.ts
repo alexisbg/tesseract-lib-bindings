@@ -1,14 +1,6 @@
 import Ref from 'ref';
-
-import TessFFI, { TessResultIterator } from './tesseract-ffi';
-
-
-export interface BoundingBox {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-}
+import TessFFI from './tesseract-ffi';
+import { BoundingBox, TessResultIterator } from './interfaces';
 
 
 // Levels
@@ -17,7 +9,6 @@ export const RIL_PARA = 1;
 export const RIL_TEXTLINE = 2;
 export const RIL_WORD = 3;
 export const RIL_SYMBOL = 4;
-
 
 
 export function getBoundingBox(iterator: TessResultIterator, level: number): BoundingBox | null {

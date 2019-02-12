@@ -1,10 +1,4 @@
-import { TessResultIterator } from './tesseract-ffi';
-export interface BoundingBox {
-    left: number;
-    top: number;
-    right: number;
-    bottom: number;
-}
+import { BoundingBox, TessResultIterator } from './interfaces';
 export declare const RIL_BLOCK = 0;
 export declare const RIL_PARA = 1;
 export declare const RIL_TEXTLINE = 2;
