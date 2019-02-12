@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@types/ffi": "0.2.1",
-    "@types/node": "10.12.24",
+    "@types/node": "11.9.0",
     "@types/ref": "0.0.28",
     "@types/ref-struct": "0.0.29",
     "ffi": "2.3.0",
@@ -31,6 +31,6 @@
     "@typescript-eslint/parser": "1.3.0",
     "eslint": "5.13.0",
     "source-map-support": "0.5.10",
-    "typescript": "3.2.2"
+    "typescript": "3.3.1"
   }
 }
