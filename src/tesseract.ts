@@ -56,7 +56,7 @@ export function getResultIterator(api: TessBaseApi): TessResultIterator {
 }
 
 
-export async function getUtf8Text(api: TessBaseApi): Promise<string> {
+export async function getUtf8TextAsync(api: TessBaseApi): Promise<string> {
 
   return new Promise((resolve, reject) => {
 
@@ -75,7 +75,7 @@ export async function getUtf8Text(api: TessBaseApi): Promise<string> {
 }
 
 
-export async function reconize(api: TessBaseApi): Promise<void> {
+export async function reconizeAsync(api: TessBaseApi): Promise<void> {
 
   return new Promise((resolve, reject) => {
 
@@ -91,7 +91,7 @@ export async function reconize(api: TessBaseApi): Promise<void> {
 }
 
 
-export async function setImage(
+export async function setImageAsync(
   api: TessBaseApi,
   imageData: Buffer,
   width: number,

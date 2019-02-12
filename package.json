@@ -1,6 +1,6 @@
 {
   "name": "tesseract-lib-bindings",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node.js native bindings for libtesseract",
   "main": "lib/index.js",
   "author": "Alexis Bergue",
