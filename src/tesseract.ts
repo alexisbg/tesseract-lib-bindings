@@ -58,36 +58,24 @@ export function getResultIterator(api: TessBaseApi): TessResultIterator {
 
 export async function getUtf8TextAsync(api: TessBaseApi): Promise<string> {
 
-  return new Promise((resolve, reject) => {
+  const textPtr: Buffer = TessFFI.TessBaseAPIGetUTF8Text(api);
 
-    try {
-      const textPtr: Buffer = TessFFI.TessBaseAPIGetUTF8Text(api);
+  // There is no need to create a new Buffer because toString copies it
+  const str = Ref.reinterpretUntilZeros(textPtr, 1, 0).toString();
 
-      // There is no need to create a new Buffer because toString copies it
-      resolve(Ref.reinterpretUntilZeros(textPtr, 1, 0).toString());
+  TessFFI.TessDeleteText(textPtr);
 
-      TessFFI.TessDeleteText(textPtr);
-    }
-    catch (error) {
-      reject(error);
-    }
-  });
+  return str;
 }
 
 
 export async function reconizeAsync(api: TessBaseApi): Promise<void> {
 
-  return new Promise((resolve, reject) => {
+  const err: number = TessFFI.TessBaseAPIRecognize(api, null);
 
-    const err: number = TessFFI.TessBaseAPIRecognize(api, null);
-
-    if (err) {
-      reject(new Error('TessBaseAPIRecognize failed'));
-    }
-    else {
-      resolve();
-    }
-  });
+  if (err) {
+    throw new Error('TessBaseAPIRecognize failed');
+  }
 }
 
 
@@ -102,17 +90,4 @@ export async function setImageAsync(
 
   // imageData has to be raw image data
   TessFFI.TessBaseAPISetImage(api, imageData, width, height, bytesPerPixel, bytesPerLine);
-
-  return new Promise((resolve, reject) => {
-
-    try {
-      // imageData has to be raw image data
-      TessFFI.TessBaseAPISetImage(api, imageData, width, height, bytesPerPixel, bytesPerLine);
-
-      resolve();
-    }
-    catch (error) {
-      reject(error);
-    }
-  });
 }
